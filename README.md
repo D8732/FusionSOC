@@ -47,29 +47,53 @@
 
 
 ### 3) Windows brute-force (4625)
-- **Goal:** detect ≥5 failures within 15 minutes.
+- **Goal:** detect ≥5 failures within 15 minutes. Then created detection rule
 - **How to use:** import `windows_bruteforce_4625.rule.json`.
 - **Test:** simulate failed RDP/local logons to your lab VM; verify alert.
+- <img width="1329" height="640" alt="Successful and Unsuccessful logon attempts" src="https://github.com/user-attachments/assets/706a8842-191f-4f16-9249-b555e39f3406" />
+<img width="1344" height="653" alt="Detection rule for Brute Force" src="https://github.com/user-attachments/assets/5939f4ff-7824-47a0-bf3b-8cf34a115dda" />
+
+
 
 ### 4) PowerShell execution (4688)
 - **Goal:** surface PowerShell starts with command line context.
 - **How to use:** import `powershell_4688_suspicious.rule.json`.
 - **Test:** run `powershell.exe -Command "Get-Process"` and confirm events in `/kql/powershell_4688_events.kql`.
+- Execute Powershell command
+- <img width="1095" height="337" alt="Powershell command generate logs" src="https://github.com/user-attachments/assets/7d31a064-f40c-4c11-bc16-6706924ebee8" />
+Download file to get events to generate
+<img width="1117" height="103" alt="download file in powershell to get commands" src="https://github.com/user-attachments/assets/cfb524c4-15ea-4789-a238-a348252805f6" />
+<img width="1356" height="655" alt="Powershell Events Generated" src="https://github.com/user-attachments/assets/966c27d1-50b0-4aea-9c1a-5083e56c2ef8" />
+<img width="1342" height="642" alt="Powershell Detection rules" src="https://github.com/user-attachments/assets/d59fae86-e314-4066-8eea-a9777d4e2b77" />
 
-### 5) Phishing enrichment (bonus)
+
+
+
+
+### 5) Phishing Email Analysis
 - **Idea:** enrich phishing emails with **VirusTotal**/header analysis and attach evidence to incidents.
+- Suspicious email highlighted are the key things to look for in a phishing email to educate end users on.
+- 1. the headline using the full email as greeting is always a red flag
+  2. Hover mouse over the link should point to a microsoft.com domain, as you see in the bottom left hand corner it points to security-checkup.com, and phishing emails try to get you to act, urgently.  <img width="1360" height="767" alt="Suspicious email" src="https://github.com/user-attachments/assets/b1548447-bdeb-4441-9576-7cbadc34f0d5" />
+  Header Email analysis For Analyst to look for
+In the the Return path that should be from Microsoft.com instead its from gmail, should raise a red flag
+SPf, DKM, and DMARC all state pass should still be looked further into
+also the recieved from mail-vk1-f180.google.com should come from microsoft as well
+<img width="955" height="737" alt="Email header 1" src="https://github.com/user-attachments/assets/cb852e09-c376-4c97-9553-4ff1c892420f" />
+Use Tools like Virus Total to look more into the the Potentially Malicious link to better understand what you are dealing with and next course of Action
+<img width="1333" height="636" alt="Virustotal" src="https://github.com/user-attachments/assets/7c32d8a2-538c-4f8b-aa60-037c061e6e4e" />
+
+ 
 
 ---
 
-## Importing the detections (JSON)
-1. Portal → **Microsoft Sentinel** → **Analytics** → **Create** → **Import from JSON**.  
-2. Paste file contents from `/detections/*.rule.json` and **Create**.  
-   - Adjust **Severity**, **Tactics**, and **Entity mappings** as desired.
+
 
 ## Notes
 - Keep IAM identities **least‑privileged**.  
 - Use **DCR** connector configuration for Windows Security Events to control costs.  
 - Normalize custom data with **DCR transforms** if you extend this beyond CloudTrail.
+- Will be a part 2 of this project.
 
 **Author:** Dareis Newton — Winston‑Salem, NC  
 **Updated:** 2025-08-10
