@@ -6,8 +6,6 @@
 - **/images** – screenshots used in documentation
 - **/kql** – exact queries used in this lab (copy/paste into Sentinel)
 - **/detections** – ready-to-import *Scheduled* rule JSONs for Microsoft Sentinel
-- **/docs** – space for notes/diagrams
-- **/playbooks** – space for Logic App exports
 
 ## Tool/Services
 1. **Install** the **Amazon Web Services** solution in Sentinel (Content Hub).
