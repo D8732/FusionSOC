@@ -33,8 +33,8 @@
 ### 2) AWS IAM user created or deleted
 - **Goal:** alert on `CreateUser` / `DeleteUser` operations.
 - **How to use:** import `aws_iam_user_created_deleted.rule.json` or run `/kql/...created_deleted.kql`.
-- **Test:** create/delete a throwaway IAM user; confirm alert and entities.
-- **Create Detection rule for whenever a user is created or Deleted in AWS  <img width="1353" height="500" alt="Screenshot 2025-08-09 134031" src="https://github.com/user-attachments/assets/62c3182a-4d8d-40b3-96b4-8e34c1e7dc2f" />
+- **Test:** create/delete a throwaway IAM user; confirm alert and entities,Create Detection rule for whenever a user is created or Deleted in AWS.
+- <img width="1353" height="500" alt="Screenshot 2025-08-09 134031" src="https://github.com/user-attachments/assets/62c3182a-4d8d-40b3-96b4-8e34c1e7dc2f" />
 - <img width="1354" height="681" alt="Screenshot 2025-08-09 134604" src="https://github.com/user-attachments/assets/cdea4e05-0486-49ba-8b07-776983720791" />
 - <img width="1339" height="652" alt="Screenshot 2025-08-09 140143" src="https://github.com/user-attachments/assets/f52643c5-a8ae-43bd-9b35-2915f83439e6" />
 
