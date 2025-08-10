@@ -1,0 +1,8 @@
+// Successful AWS Console logins with source IP and region (matches your 'Success' screenshot)
+AWSCloudTrail
+| where EventName == "ConsoleLogin"
+| where EventSource == "signin.amazonaws.com"
+| extend LoginStatus = tostring(parse_json(ResponseElements).ConsoleLogin)
+| where LoginStatus == "Success"
+| project TimeGenerated, LoginStatus, UserIdentityUserName, SourceIpAddress, AWSRegion, EventSource
+| order by TimeGenerated desc

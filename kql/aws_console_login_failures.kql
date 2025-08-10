@@ -1,0 +1,8 @@
+// AWS Console login failures (matches your screenshot with status Failure)
+AWSCloudTrail
+| where EventName == "ConsoleLogin"
+| where EventSource == "signin.amazonaws.com"
+| extend Status = tostring(parse_json(ResponseElements).ConsoleLogin)
+| where Status == "Failure"
+| project TimeGenerated, Status, UserIdentityUserName, UserIdentityArn, SourceIpAddress, AWSRegion, errorCode, errorMessage, AdditionalEventData
+| order by TimeGenerated desc

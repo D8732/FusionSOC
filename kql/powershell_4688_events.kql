@@ -1,0 +1,7 @@
+// PowerShell process creation (4688) – used with your 'PowerShell events Generated' rule
+SecurityEvent
+| where EventID == 4688
+| extend NewProc = tostring(NewProcessName), ParentProc = tostring(ParentProcessName)
+| where Process has_cs "powershell.exe" or NewProc has_cs "powershell.exe" or CommandLine has "powershell"
+| project TimeGenerated, Computer, Account, NewProc, ParentProc, CommandLine, Process
+| order by TimeGenerated desc

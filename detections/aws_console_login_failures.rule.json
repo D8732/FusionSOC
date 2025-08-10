@@ -1,0 +1,27 @@
+{
+  "kind": "Scheduled",
+  "properties": {
+    "displayName": "AWS \u2013 Console login failures",
+    "description": "Detect failed AWS root/IAM console logins from CloudTrail signin.amazonaws.com events.",
+    "severity": "Medium",
+    "enabled": true,
+    "query": "// AWS Console login failures (matches your screenshot with status Failure)\nAWSCloudTrail\n| where EventName == \"ConsoleLogin\"\n| where EventSource == \"signin.amazonaws.com\"\n| extend Status = tostring(parse_json(ResponseElements).ConsoleLogin)\n| where Status == \"Failure\"\n| project TimeGenerated, Status, UserIdentityUserName, UserIdentityArn, SourceIpAddress, AWSRegion, errorCode, errorMessage, AdditionalEventData\n| order by TimeGenerated desc",
+    "queryFrequency": "PT30M",
+    "queryPeriod": "PT1H",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "eventGroupingSettings": {
+      "aggregationKind": "SingleAlert"
+    },
+    "tactics": [
+      "CredentialAccess",
+      "InitialAccess"
+    ],
+    "techniques": [
+      "T1110"
+    ],
+    "suppressionDuration": "PT5H",
+    "suppressionEnabled": false,
+    "customDetails": {}
+  }
+}

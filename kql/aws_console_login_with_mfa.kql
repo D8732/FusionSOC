@@ -1,0 +1,7 @@
+// ConsoleLogin with MFAUsed extracted (seen in your 'MFAUsed' screenshot variant)
+AWSCloudTrail
+| where EventName == "ConsoleLogin" and EventSource == "signin.amazonaws.com"
+| extend Status   = tostring(parse_json(ResponseElements).ConsoleLogin)
+| extend MFAUsed  = tostring(parse_json(AdditionalEventData).MFAUsed)
+| project TimeGenerated, Status, MFAUsed, UserIdentityArn, UserIdentityType, SourceIpAddress, AWSRegion, AwsEventId
+| order by TimeGenerated desc

@@ -1,0 +1,27 @@
+{
+  "kind": "Scheduled",
+  "properties": {
+    "displayName": "Windows \u2013 Brute-force for failed logon attempts",
+    "description": "High-rate 4625 failures from same Computer/Account/IpAddress within 15 minutes.",
+    "severity": "High",
+    "enabled": true,
+    "query": "// Brute-force for failed logon attempts (your Analytics rule query)\nlet window = 24h;\nSecurityEvent\n| where TimeGenerated > ago(window)\n| where EventID == 4625\n| summarize Fails = count(), Start = min(TimeGenerated), End = max(TimeGenerated) by Computer, Account, IpAddress\n| where Fails >= 5 and End - Start < 15m\n| order by Fails desc",
+    "queryFrequency": "PT15M",
+    "queryPeriod": "PT24H",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "eventGroupingSettings": {
+      "aggregationKind": "SingleAlert"
+    },
+    "tactics": [
+      "CredentialAccess",
+      "Persistence"
+    ],
+    "techniques": [
+      "T1110"
+    ],
+    "suppressionDuration": "PT5H",
+    "suppressionEnabled": false,
+    "customDetails": {}
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "Scheduled",
+  "properties": {
+    "displayName": "AWS \u2013 IAM user created or deleted",
+    "description": "Detects creation/deletion of IAM users using CloudTrail iam.amazonaws.com events.",
+    "severity": "Medium",
+    "enabled": true,
+    "query": "// Detect IAM user created or deleted (matches your CreateUser/DeleteUser screenshot & rule)\nlet lookback = 24h;\nAWSCloudTrail\n| where TimeGenerated > ago(lookback)\n| where EventSource == \"iam.amazonaws.com\"\n| where EventName in (\"CreateUser\",\"DeleteUser\")\n| extend TargetUser = tostring(parse_json(RequestParameters).userName)\n| project TimeGenerated, EventName, TargetUser, UserIdentityArn, SourceIpAddress, AWSRegion\n| order by TimeGenerated desc",
+    "queryFrequency": "PT1H",
+    "queryPeriod": "PT24H",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "eventGroupingSettings": {
+      "aggregationKind": "SingleAlert"
+    },
+    "tactics": [
+      "Persistence",
+      "PrivilegeEscalation",
+      "DefenseEvasion"
+    ],
+    "techniques": [
+      "T1136",
+      "T1098"
+    ],
+    "suppressionDuration": "PT5H",
+    "suppressionEnabled": false,
+    "customDetails": {}
+  }
+}

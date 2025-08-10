@@ -1,0 +1,6 @@
+// Logon successes/failures (4624/4625) – matches your validation query
+SecurityEvent
+| where TimeGenerated > ago(2h)
+| where EventID in (4624, 4625)
+| project TimeGenerated, Computer, EventID, Account, LogonType, IpAddress, Process
+| order by TimeGenerated desc

@@ -1,0 +1,6 @@
+// Count of ConsoleLogin events by Status and User (your quick validation query)
+AWSCloudTrail
+| where EventName == "ConsoleLogin"
+| extend Status = tostring(parse_json(ResponseElements).ConsoleLogin)
+| summarize Count = count() by Status, UserIdentityUserName
+| order by Count desc

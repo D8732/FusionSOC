@@ -1,0 +1,28 @@
+{
+  "kind": "Scheduled",
+  "properties": {
+    "displayName": "Endpoint \u2013 PowerShell process creation (4688)",
+    "description": "Detects PowerShell process starts using 4688 with command line for triage.",
+    "severity": "Medium",
+    "enabled": true,
+    "query": "// PowerShell process creation (4688) \u2013 used with your 'PowerShell events Generated' rule\nSecurityEvent\n| where EventID == 4688\n| extend NewProc = tostring(NewProcessName), ParentProc = tostring(ParentProcessName)\n| where Process has_cs \"powershell.exe\" or NewProc has_cs \"powershell.exe\" or CommandLine has \"powershell\"\n| project TimeGenerated, Computer, Account, NewProc, ParentProc, CommandLine, Process\n| order by TimeGenerated desc",
+    "queryFrequency": "PT15M",
+    "queryPeriod": "PT2H",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "eventGroupingSettings": {
+      "aggregationKind": "SingleAlert"
+    },
+    "tactics": [
+      "Execution",
+      "DefenseEvasion"
+    ],
+    "techniques": [
+      "T1059.001",
+      "T1202"
+    ],
+    "suppressionDuration": "PT5H",
+    "suppressionEnabled": false,
+    "customDetails": {}
+  }
+}
