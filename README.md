@@ -27,7 +27,10 @@
 - **How to use:**
   - Import `detections/aws_console_login_failures.rule.json` (Analytics → **Create** → **Import from JSON**).
   - Or run `/kql/aws_console_login_failures.kql` in Logs to validate.
-- **Test:** intentionally fail console login; confirm alert in **Incidents**.    <img width="1321" height="647" alt="Failed logon AWS " src="https://github.com/user-attachments/assets/088937c5-7daa-4c0f-bf99-94f549c70f3a" />
+- **Test:** intentionally fail console login; confirm alert in **Incidents**.
+- <img width="423" height="566" alt="Screenshot 2025-08-09 120837" src="https://github.com/user-attachments/assets/f35ad327-b7e7-44c4-9e58-a841e6722fe5" />
+
+-  <img width="1321" height="647" alt="Failed logon AWS " src="https://github.com/user-attachments/assets/088937c5-7daa-4c0f-bf99-94f549c70f3a" />
 
 
 ### 2) AWS IAM user created or deleted
