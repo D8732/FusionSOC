@@ -29,8 +29,9 @@
   - Or run `/kql/aws_console_login_failures.kql` in Logs to validate.
 - **Test:** intentionally fail console login; confirm alert in **Incidents**.
 - <img width="423" height="566" alt="Screenshot 2025-08-09 120837" src="https://github.com/user-attachments/assets/f35ad327-b7e7-44c4-9e58-a841e6722fe5" />
-
 -  <img width="1321" height="647" alt="Failed logon AWS " src="https://github.com/user-attachments/assets/088937c5-7daa-4c0f-bf99-94f549c70f3a" />
+<img width="1339" height="652" alt="AWS Detection rule failed logon" src="https://github.com/user-attachments/assets/20896e0f-a862-472a-97a5-c62ddc4750a7" />
+
 
 
 ### 2) AWS IAM user created or deleted
@@ -39,7 +40,8 @@
 - **Test:** create/delete a throwaway IAM user; confirm alert and entities,Create Detection rule for whenever a user is created or Deleted in AWS.
 - <img width="1353" height="500" alt="Screenshot 2025-08-09 134031" src="https://github.com/user-attachments/assets/62c3182a-4d8d-40b3-96b4-8e34c1e7dc2f" />
 - <img width="1354" height="681" alt="Screenshot 2025-08-09 134604" src="https://github.com/user-attachments/assets/cdea4e05-0486-49ba-8b07-776983720791" />
-- <img width="1339" height="652" alt="Screenshot 2025-08-09 140143" src="https://github.com/user-attachments/assets/f52643c5-a8ae-43bd-9b35-2915f83439e6" />
+  <img width="1352" height="639" alt="IAM detetction rule" src="https://github.com/user-attachments/assets/787ee32e-26de-4597-8f92-310117d2374e" />
+
 
 
 
