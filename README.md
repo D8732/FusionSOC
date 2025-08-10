@@ -9,14 +9,14 @@
 - **/docs** – space for notes/diagrams
 - **/playbooks** – space for Logic App exports
 
-## Runbook (10,000‑ft)
+## Tool/Services
 1. **Install** the **Amazon Web Services** solution in Sentinel (Content Hub).
 2. **Create CloudTrail** → logs to **S3** (multi‑region) → configure **SQS**.
 3. **Connect** Sentinel’s **AWS S3** data connector (Role ARN + SQS URL).
 4. **Enable** **Microsoft Entra ID** + onboard your **Windows VM** with a DCR.
 5. **Import detections** from `/detections` or use the queries in `/kql`.
 6. **Validate** by generating events (AWS login attempts, IAM user ops, Windows logons, PowerShell).
-7. (Optional) **Playbooks** – trigger enrichment/notifications on incidents.
+7.  **Create Detections** – trigger enrichment/notifications on incidents.
 
 ---
 
