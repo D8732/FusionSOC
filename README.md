@@ -90,8 +90,6 @@ Use Tools like Virus Total to look more into the the Potentially Malicious link 
 
 ## Notes
 - Keep IAM identities **least‑privileged**.  
-- Use **DCR** connector configuration for Windows Security Events to control costs.  
-- Normalize custom data with **DCR transforms** if you extend this beyond CloudTrail.
 - This links to Controls put in place from Nist 800-53 and Nist CSF https://github.com/D8732/FusionSOC-NIST/blob/main/README.md 
 
 **Author:** Dareis Newton — Winston‑Salem, NC  
