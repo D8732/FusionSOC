@@ -90,7 +90,8 @@ Use Tools like Virus Total to look more into the the Potentially Malicious link 
 
 ## Notes
 - Keep IAM identities **least‑privileged**.  
-- This links to Controls put in place from Nist 800-53 and Nist CSF https://github.com/D8732/FusionSOC-NIST/blob/main/README.md 
+- This links to Controls put in place from Nist 800-53 and Nist CSF https://github.com/D8732/FusionSOC-NIST/blob/main/README.md
+- This Links to the Vulnerability Management of the VM used in this Project using Qualys Platform https://github.com/D8732/Azure-VM-Vulnerability-Management-Project-Qualys-Cloud-Agent-Fusion-Soc/blob/main/README.md
 
 **Author:** Dareis Newton — Winston‑Salem, NC  
 **Updated:** 2025-08-10
